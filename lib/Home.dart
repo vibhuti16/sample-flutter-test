@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const platform =
       MethodChannel('com.example.solo_flutter_example/getUserDetails');
   String accessToken =
-      "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1PRkRUdTZ6VjBXRlFjVUY0YkxwRCJ9.eyJodHRwczovL3NvbG8uY28vdjEvdXNlcl9pZCI6MTAwMDAwMDE0MiwiaHR0cHM6Ly9zb2xvLmNvL3YxL3N0cmlwZV9hY2NvdW50X2lkIjoiYWNjdF8xTERSbWk0Sk9scGhNeWdUIiwiaXNzIjoiaHR0cHM6Ly9iZXRhLXNvbG8tcGF5LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJzbXN8NjJiMmZlMDY2ZjFhMWE1Y2JiM2E2ZTcxIiwiYXVkIjpbImh0dHBzOi8vc29sby5jby92MS8iXSwiaWF0IjoxNjU2NDA3NjA2LCJleHAiOjE2NTY0OTQwMDYsImF6cCI6ImRNMFVzMXFmbU9ta1FrdFgzQVp3U001VzdRR1p0QUpEIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCBvZmZsaW5lX2FjY2VzcyJ9.A3lgMs-9IbbqHfekTFySP72w-Nb71AE_apvblfD4PjCJsLBTKASG9g75-3VV6_Ro6V0dY6nz6MXBXPRrsFsr0XkOJ9bqn6920tWSUQez-D9UewLSt9pOcL3Bba08w5U3XJY0NBXqQIWzWGzIAhhqU8sIpAvwauSd1IsTYRAySHpP5QYP2sY5LRLaCa0YNxkHkcViCwhmKYN3vJt67eCBeGJRZgUK8C4gZ2fpDX3SlQ_8Hhq6K9Rggny71Td-pmPuGuoDXVxw_oORQXvEIk5UWl3yY12VZIHKtWDXTK80hlGvIrJHeeQXyAfnjBxeX09UfLYiIe0slPcEvOZChyxJjg";
+      "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1PRkRUdTZ6VjBXRlFjVUY0YkxwRCJ9.eyJodHRwczovL3NvbG8uY28vdjEvdXNlcl9pZCI6MTAwMDAwMDEzNSwiaHR0cHM6Ly9zb2xvLmNvL3YxL3N0cmlwZV9hY2NvdW50X2lkIjoiYWNjdF8xTEQyMWU0RlB6RklhRUtYIiwiaXNzIjoiaHR0cHM6Ly9iZXRhLXNvbG8tcGF5LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJzbXN8NjJiMTdiNTk2ZjFhMWE1Y2JiM2VmMmZmIiwiYXVkIjpbImh0dHBzOi8vc29sby5jby92MS8iLCJodHRwczovL2JldGEtc29sby1wYXkudXMuYXV0aDAuY29tL3VzZXJpbmZvIl0sImlhdCI6MTY1NzEwMjc5MCwiZXhwIjoxNjU3MTg5MTkwLCJhenAiOiJyYllJSnZWN3hDQWxmUnV4dnhRVlNaaVM3a25UbFZ2aSIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwifQ.J1uhEwuJ5ulpQ0HXBHE-zSiMvAa5t9n6zYirSc0-LRt3rNe9ZhoLPO4dlLd6mHvAaF1nBtM-RTegmoTRGhuc1-N0M27-vWEahdlBd9ZMqDjOTVQruyglJIaz4wYdXecU7vkx4CjhZ4vmAqkDwyFYpqZX_we1Vs0dBClLlsVtsCjNMMoAczYMHj7DQrT-bF6K0eZUdFrQDOhN1X8cowfY5MoOQqMTZEYplGXhWarELTCclUs1oFMfLmSRe5pyv11VnT4fqNqn7GrAMBx9cmeWJZtI1h7gzHHo5WDhC8pECx6Go0tGxTY7TujxksYIS2vhoEVjebYsAoyfiwBaFxPS0g";
   String _firstName = '';
 
   @override
@@ -64,10 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 onPressed: () async {
-                  dynamic result = await platform.invokeListMethod(
+                  print(accessToken);
+                  dynamic result = await platform.invokeMethod(
                       'getUserDetails', {'access_token': accessToken});
                   setState(() {
-                    _firstName = result['first_name'];
+                    _firstName = result;
                   });
                 }),
           ],
